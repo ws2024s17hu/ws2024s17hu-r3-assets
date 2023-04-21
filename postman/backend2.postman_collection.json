@@ -103,11 +103,11 @@
 											"            \"updatedAt\": {\r",
 											"                \"type\": \"string\"\r",
 											"            },\r",
-											"            \"averageSpeed\": {\r",
+											"            \"averagePace\": {\r",
 											"                \"type\": \"string\"\r",
 											"            }\r",
 											"        },\r",
-											"        \"required\": [\"id\", \"name\", \"contactEmail\", \"plannedStartingTime\", \"startingTime\", \"accessCode\", \"createdAt\", \"updatedAt\", \"averageSpeed\"]\r",
+											"        \"required\": [\"id\", \"name\", \"contactEmail\", \"plannedStartingTime\", \"startingTime\", \"accessCode\", \"createdAt\", \"updatedAt\", \"averagePace\"]\r",
 											"    }\r",
 											"};\r",
 											"pm.test('Schema is valid', function () {\r",
@@ -173,11 +173,11 @@
 											"        \"updatedAt\": {\r",
 											"            \"type\": \"string\"\r",
 											"        },\r",
-											"        \"averageSpeed\": {\r",
+											"        \"averagePace\": {\r",
 											"            \"type\": \"string\"\r",
 											"        }\r",
 											"    },\r",
-											"    \"required\": [\"id\", \"name\", \"contactEmail\", \"plannedStartingTime\", \"startingTime\", \"accessCode\", \"createdAt\", \"updatedAt\", \"averageSpeed\"]\r",
+											"    \"required\": [\"id\", \"name\", \"contactEmail\", \"plannedStartingTime\", \"startingTime\", \"accessCode\", \"createdAt\", \"updatedAt\", \"averagePace\"]\r",
 											"};\r",
 											"pm.test('Schema is valid', function () {\r",
 											"    pm.response.to.have.jsonSchema(schema);\r",
@@ -526,6 +526,23 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Reset DB",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/resetDb",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"resetDb"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [

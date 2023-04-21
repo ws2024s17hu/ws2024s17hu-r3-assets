@@ -1,356 +1,382 @@
 {
-  "info": {
-    "_postman_id": "93f9a624-959a-48d2-9a6a-019a58546711",
-    "name": "Backend",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "2549077"
-  },
-  "item": [
-    {
-      "name": "Login",
-      "item": [
-        {
-          "name": "Login",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Successful login\", function () {\r",
-                  "    var jsonData = pm.response.json();\r",
-                  "    if (pm.response.code === 200) {\r",
-                  "        pm.collectionVariables.set(\"token\", jsonData.token);\r",
-                  "    } else {\r",
-                  "        throw Error(jsonData.message);\r",
-                  "    }\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{host}}/login",
-              "host": ["{{host}}"],
-              "path": ["login"]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Teams",
-      "item": [
-        {
-          "name": "Get Teams",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {\r",
-                  "    pm.response.to.have.status(200);\r",
-                  "});\r",
-                  "\r",
-                  "const schema = {\r",
-                  "    \"type\": \"array\",\r",
-                  "    \"items\": {\r",
-                  "        \"type\": \"object\",\r",
-                  "        \"properties\": {\r",
-                  "            \"id\": {\r",
-                  "                \"type\": \"number\"\r",
-                  "            },\r",
-                  "            \"name\": {\r",
-                  "                \"type\": \"string\",\r",
-                  "            },\r",
-                  "            \"contactEmail\": {\r",
-                  "                \"type\": \"string\",\r",
-                  "            },\r",
-                  "            \"plannedStartingTime\": {\r",
-                  "                \"type\": [\"string\", \"null\"],\r",
-                  "            },\r",
-                  "            \"startingTime\": {\r",
-                  "                \"type\": [\"string\", \"null\"],\r",
-                  "            },\r",
-                  "            \"accessCode\": {\r",
-                  "                \"type\": \"string\",\r",
-                  "                \"minLength\": 9,\r",
-                  "                \"maxLength\": 9\r",
-                  "            },\r",
-                  "            \"createdAt\": {\r",
-                  "                \"type\": \"string\"\r",
-                  "            },\r",
-                  "            \"updatedAt\": {\r",
-                  "                \"type\": \"string\"\r",
-                  "            },\r",
-                  "            \"averageSpeed\": {\r",
-                  "                \"type\": \"string\"\r",
-                  "            }\r",
-                  "        },\r",
-                  "        \"required\": [\"id\", \"name\", \"contactEmail\", \"plannedStartingTime\", \"startingTime\", \"accessCode\", \"createdAt\", \"updatedAt\", \"averageSpeed\"]\r",
-                  "    }\r",
-                  "};\r",
-                  "pm.test('Schema is valid', function () {\r",
-                  "    pm.response.to.have.jsonSchema(schema);\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{host}}/teams",
-              "host": ["{{host}}"],
-              "path": ["teams"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Create Team",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 201\", function () {\r",
-                  "    pm.response.to.have.status(201);\r",
-                  "});\r",
-                  "\r",
-                  "const schema = {\r",
-                  "    \"type\": \"object\",\r",
-                  "    \"properties\": {\r",
-                  "        \"id\": {\r",
-                  "            \"type\": \"number\"\r",
-                  "        },\r",
-                  "        \"name\": {\r",
-                  "            \"type\": \"string\",\r",
-                  "        },\r",
-                  "        \"contactEmail\": {\r",
-                  "            \"type\": \"string\",\r",
-                  "        },\r",
-                  "        \"plannedStartingTime\": {\r",
-                  "            \"type\": [\"string\", \"null\"],\r",
-                  "        },\r",
-                  "        \"startingTime\": {\r",
-                  "            \"type\": [\"string\", \"null\"],\r",
-                  "        },\r",
-                  "        \"accessCode\": {\r",
-                  "            \"type\": \"string\",\r",
-                  "            \"minLength\": 9,\r",
-                  "            \"maxLength\": 9\r",
-                  "        },\r",
-                  "        \"createdAt\": {\r",
-                  "            \"type\": \"string\"\r",
-                  "        },\r",
-                  "        \"updatedAt\": {\r",
-                  "            \"type\": \"string\"\r",
-                  "        },\r",
-                  "        \"averageSpeed\": {\r",
-                  "            \"type\": \"string\"\r",
-                  "        }\r",
-                  "    },\r",
-                  "    \"required\": [\"id\", \"name\", \"contactEmail\", \"plannedStartingTime\", \"startingTime\", \"accessCode\", \"createdAt\", \"updatedAt\", \"averageSpeed\"]\r",
-                  "};\r",
-                  "pm.test('Schema is valid', function () {\r",
-                  "    pm.response.to.have.jsonSchema(schema);\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"name\": \"Team 4\",\r\n    \"contactEmail\": \"team4@example.com\",\r\n    \"plannedStartingTime\": \"2023-04-22T10:00:00.000Z\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{host}}/teams",
-              "host": ["{{host}}"],
-              "path": ["teams"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Update Team",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {\r",
-                  "    pm.response.to.have.status(200);\r",
-                  "});\r",
-                  "\r",
-                  "const schema = {\r",
-                  "    \"type\": \"object\",\r",
-                  "    \"properties\": {\r",
-                  "        \"id\": {\r",
-                  "            \"type\": \"number\"\r",
-                  "        },\r",
-                  "        \"name\": {\r",
-                  "            \"type\": \"string\",\r",
-                  "        },\r",
-                  "        \"contactEmail\": {\r",
-                  "            \"type\": \"string\",\r",
-                  "        },\r",
-                  "        \"plannedStartingTime\": {\r",
-                  "            \"type\": [\"string\", \"null\"],\r",
-                  "        },\r",
-                  "        \"startingTime\": {\r",
-                  "            \"type\": [\"string\", \"null\"],\r",
-                  "        },\r",
-                  "        \"accessCode\": {\r",
-                  "            \"type\": \"string\",\r",
-                  "            \"minLength\": 9,\r",
-                  "            \"maxLength\": 9\r",
-                  "        },\r",
-                  "        \"createdAt\": {\r",
-                  "            \"type\": \"string\"\r",
-                  "        },\r",
-                  "        \"updatedAt\": {\r",
-                  "            \"type\": \"string\"\r",
-                  "        }\r",
-                  "    },\r",
-                  "    \"required\": [\"id\", \"name\", \"contactEmail\", \"plannedStartingTime\", \"startingTime\", \"accessCode\", \"createdAt\", \"updatedAt\"]\r",
-                  "};\r",
-                  "pm.test('Schema is valid', function () {\r",
-                  "    pm.response.to.have.jsonSchema(schema);\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"contactEmail\": \"Team 1asda\",\r\n    \"plannedStartingTime\": \"2023-04-22T15:10:23.362Z\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{host}}/teams/:teamId",
-              "host": ["{{host}}"],
-              "path": ["teams", ":teamId"],
-              "variable": [
-                {
-                  "key": "teamId",
-                  "value": "1"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Delete Team",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {\r",
-                  "    pm.response.to.have.status(200);\r",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "{{host}}/teams/:teamId",
-              "host": ["{{host}}"],
-              "path": ["teams", ":teamId"],
-              "query": [
-                {
-                  "key": "",
-                  "value": null,
-                  "disabled": true
-                }
-              ],
-              "variable": [
-                {
-                  "key": "teamId",
-                  "value": "2"
-                }
-              ]
-            }
-          },
-          "response": []
-        }
-      ]
-    }
-  ],
-  "auth": {
-    "type": "bearer",
-    "bearer": [
-      {
-        "key": "token",
-        "value": "{{token}}",
-        "type": "string"
-      }
-    ]
-  },
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "type": "text/javascript",
-        "exec": [""]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "type": "text/javascript",
-        "exec": [""]
-      }
-    }
-  ],
-  "variable": [
-    {
-      "key": "token",
-      "value": "",
-      "type": "string"
-    },
-    {
-      "key": "host",
-      "value": "http://backend.ub2023-YY.hu/api/v1",
-      "type": "string"
-    }
-  ]
+	"info": {
+		"_postman_id": "93f9a624-959a-48d2-9a6a-019a58546711",
+		"name": "Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2549077"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful login\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    if (pm.response.code === 200) {\r",
+									"        pm.collectionVariables.set(\"token\", jsonData.token);\r",
+									"    } else {\r",
+									"        throw Error(jsonData.message);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teams",
+			"item": [
+				{
+					"name": "Get Teams",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"    \"type\": \"array\",\r",
+									"    \"items\": {\r",
+									"        \"type\": \"object\",\r",
+									"        \"properties\": {\r",
+									"            \"id\": {\r",
+									"                \"type\": \"number\"\r",
+									"            },\r",
+									"            \"name\": {\r",
+									"                \"type\": \"string\",\r",
+									"            },\r",
+									"            \"contactEmail\": {\r",
+									"                \"type\": \"string\",\r",
+									"            },\r",
+									"            \"plannedStartingTime\": {\r",
+									"                \"type\": [\"string\", \"null\"],\r",
+									"            },\r",
+									"            \"startingTime\": {\r",
+									"                \"type\": [\"string\", \"null\"],\r",
+									"            },\r",
+									"            \"accessCode\": {\r",
+									"                \"type\": \"string\",\r",
+									"                \"minLength\": 9,\r",
+									"                \"maxLength\": 9\r",
+									"            },\r",
+									"            \"createdAt\": {\r",
+									"                \"type\": \"string\"\r",
+									"            },\r",
+									"            \"updatedAt\": {\r",
+									"                \"type\": \"string\"\r",
+									"            },\r",
+									"            \"averagePace\": {\r",
+									"                \"type\": \"string\"\r",
+									"            }\r",
+									"        },\r",
+									"        \"required\": [\"id\", \"name\", \"contactEmail\", \"plannedStartingTime\", \"startingTime\", \"accessCode\", \"createdAt\", \"updatedAt\", \"averagePace\"]\r",
+									"    }\r",
+									"};\r",
+									"pm.test('Schema is valid', function () {\r",
+									"    pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/teams",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Team",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"id\": {\r",
+									"            \"type\": \"number\"\r",
+									"        },\r",
+									"        \"name\": {\r",
+									"            \"type\": \"string\",\r",
+									"        },\r",
+									"        \"contactEmail\": {\r",
+									"            \"type\": \"string\",\r",
+									"        },\r",
+									"        \"plannedStartingTime\": {\r",
+									"            \"type\": [\"string\", \"null\"],\r",
+									"        },\r",
+									"        \"startingTime\": {\r",
+									"            \"type\": [\"string\", \"null\"],\r",
+									"        },\r",
+									"        \"accessCode\": {\r",
+									"            \"type\": \"string\",\r",
+									"            \"minLength\": 9,\r",
+									"            \"maxLength\": 9\r",
+									"        },\r",
+									"        \"createdAt\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"updatedAt\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"averagePace\": {\r",
+									"            \"type\": \"string\"\r",
+									"        }\r",
+									"    },\r",
+									"    \"required\": [\"id\", \"name\", \"contactEmail\", \"plannedStartingTime\", \"startingTime\", \"accessCode\", \"createdAt\", \"updatedAt\", \"averagePace\"]\r",
+									"};\r",
+									"pm.test('Schema is valid', function () {\r",
+									"    pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Team 4\",\r\n    \"contactEmail\": \"team4@example.com\",\r\n    \"plannedStartingTime\": \"2023-04-22T10:00:00.000Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/teams",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Team",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const schema = {\r",
+									"    \"type\": \"object\",\r",
+									"    \"properties\": {\r",
+									"        \"id\": {\r",
+									"            \"type\": \"number\"\r",
+									"        },\r",
+									"        \"name\": {\r",
+									"            \"type\": \"string\",\r",
+									"        },\r",
+									"        \"contactEmail\": {\r",
+									"            \"type\": \"string\",\r",
+									"        },\r",
+									"        \"plannedStartingTime\": {\r",
+									"            \"type\": [\"string\", \"null\"],\r",
+									"        },\r",
+									"        \"startingTime\": {\r",
+									"            \"type\": [\"string\", \"null\"],\r",
+									"        },\r",
+									"        \"accessCode\": {\r",
+									"            \"type\": \"string\",\r",
+									"            \"minLength\": 9,\r",
+									"            \"maxLength\": 9\r",
+									"        },\r",
+									"        \"createdAt\": {\r",
+									"            \"type\": \"string\"\r",
+									"        },\r",
+									"        \"updatedAt\": {\r",
+									"            \"type\": \"string\"\r",
+									"        }\r",
+									"    },\r",
+									"    \"required\": [\"id\", \"name\", \"contactEmail\", \"plannedStartingTime\", \"startingTime\", \"accessCode\", \"createdAt\", \"updatedAt\"]\r",
+									"};\r",
+									"pm.test('Schema is valid', function () {\r",
+									"    pm.response.to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"contactEmail\": \"Team 1asda\",\r\n    \"plannedStartingTime\": \"2023-04-22T15:10:23.362Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/teams/:teamId",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"teams",
+								":teamId"
+							],
+							"variable": [
+								{
+									"key": "teamId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Team",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/teams/:teamId",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"teams",
+								":teamId"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "teamId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "host",
+			"value": "http://backend.ub2023-YY.hu/api/v1",
+			"type": "string"
+		}
+	]
 }

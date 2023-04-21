@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 21, 2023 at 08:35 AM
+-- Generation Time: Apr 21, 2023 at 01:48 PM
 -- Server version: 8.0.32
 -- PHP Version: 7.4.33
 
@@ -31,7 +31,7 @@ CREATE TABLE `Runner` (
   `id` int NOT NULL,
   `firstName` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lastName` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `speed` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pace` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `teamId` int NOT NULL,
   `createdAt` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
   `updatedAt` datetime(3) NOT NULL
@@ -41,17 +41,17 @@ CREATE TABLE `Runner` (
 -- Dumping data for table `Runner`
 --
 
-INSERT INTO `Runner` (`id`, `firstName`, `lastName`, `speed`, `teamId`, `createdAt`, `updatedAt`) VALUES
-(1, 'Zoltán', 'Sisák', '06:00', 1, '2023-04-21 08:35:18.439', '2023-04-21 08:35:18.439'),
-(2, 'Zoltán', 'Szepesi', '06:10', 1, '2023-04-21 08:35:18.439', '2023-04-21 08:35:18.439'),
-(3, 'Tibor', 'Nagy', '06:00', 1, '2023-04-21 08:35:18.439', '2023-04-21 08:35:18.439'),
-(4, 'Balázs', 'Acenet', '06:00', 1, '2023-04-21 08:35:18.439', '2023-04-21 08:35:18.439'),
-(5, 'Ottó', 'Dalos', '06:20', 1, '2023-04-21 08:35:18.439', '2023-04-21 08:35:18.439'),
-(6, 'Lajos', 'Vlasics', '05:30', 1, '2023-04-21 08:35:18.439', '2023-04-21 08:35:18.439'),
-(7, 'Edit', 'Bodnár', '06:00', 1, '2023-04-21 08:35:18.439', '2023-04-21 08:35:18.439'),
-(8, 'Attila', 'Kirsch', '06:10', 1, '2023-04-21 08:35:18.439', '2023-04-21 08:35:18.439'),
-(9, 'Benjámin', 'Darvas', '06:00', 1, '2023-04-21 08:35:18.439', '2023-04-21 08:35:18.439'),
-(10, 'József', 'Kovács', '06:00', 1, '2023-04-21 08:35:18.439', '2023-04-21 08:35:18.439');
+INSERT INTO `Runner` (`id`, `firstName`, `lastName`, `pace`, `teamId`, `createdAt`, `updatedAt`) VALUES
+(1, 'Zoltán', 'Sisák', '06:00', 1, '2023-04-21 13:47:01.363', '2023-04-21 13:47:01.363'),
+(2, 'Zoltán', 'Szepesi', '06:10', 1, '2023-04-21 13:47:01.363', '2023-04-21 13:47:01.363'),
+(3, 'Tibor', 'Nagy', '06:00', 1, '2023-04-21 13:47:01.363', '2023-04-21 13:47:01.363'),
+(4, 'Balázs', 'Acenet', '06:00', 1, '2023-04-21 13:47:01.363', '2023-04-21 13:47:01.363'),
+(5, 'Ottó', 'Dalos', '06:20', 1, '2023-04-21 13:47:01.363', '2023-04-21 13:47:01.363'),
+(6, 'Lajos', 'Vlasics', '05:30', 1, '2023-04-21 13:47:01.363', '2023-04-21 13:47:01.363'),
+(7, 'Edit', 'Bodnár', '06:00', 1, '2023-04-21 13:47:01.363', '2023-04-21 13:47:01.363'),
+(8, 'Attila', 'Kirsch', '06:10', 1, '2023-04-21 13:47:01.363', '2023-04-21 13:47:01.363'),
+(9, 'Benjámin', 'Darvas', '06:00', 1, '2023-04-21 13:47:01.363', '2023-04-21 13:47:01.363'),
+(10, 'József', 'Kovács', '06:00', 1, '2023-04-21 13:47:01.363', '2023-04-21 13:47:01.363');
 
 -- --------------------------------------------------------
 
@@ -71,60 +71,60 @@ CREATE TABLE `RunnerStage` (
 --
 
 INSERT INTO `RunnerStage` (`id`, `runnerId`, `stageId`, `handoverTime`) VALUES
-(1, 9, 6, NULL),
-(2, 9, 2, NULL),
-(3, 4, 7, NULL),
-(4, 5, 4, NULL),
-(5, 6, 1, NULL),
-(6, 4, 9, NULL),
-(7, 3, 3, NULL),
-(8, 3, 5, NULL),
-(9, 9, 8, NULL),
-(10, 3, 11, NULL),
-(11, 7, 10, NULL),
-(12, 10, 23, NULL),
-(13, 3, 13, NULL),
-(14, 9, 18, NULL),
-(15, 1, 15, NULL),
+(1, 10, 8, NULL),
+(2, 6, 2, NULL),
+(3, 6, 4, NULL),
+(4, 6, 5, NULL),
+(5, 1, 6, NULL),
+(6, 5, 1, NULL),
+(7, 6, 3, NULL),
+(8, 5, 7, NULL),
+(9, 3, 9, NULL),
+(10, 3, 10, NULL),
+(11, 7, 13, NULL),
+(12, 6, 11, NULL),
+(13, 4, 14, NULL),
+(14, 3, 12, NULL),
+(15, 10, 15, NULL),
 (16, 2, 17, NULL),
-(17, 7, 14, NULL),
-(18, 9, 12, NULL),
-(19, 5, 19, NULL),
-(20, 5, 21, NULL),
-(21, 8, 27, NULL),
-(22, 6, 28, NULL),
-(23, 7, 31, NULL),
-(24, 5, 30, NULL),
-(25, 10, 25, NULL),
-(26, 7, 24, NULL),
-(27, 5, 22, NULL),
-(28, 6, 16, NULL),
-(29, 9, 32, NULL),
-(30, 2, 35, NULL),
-(31, 7, 40, NULL),
-(32, 7, 36, NULL),
-(33, 6, 34, NULL),
-(34, 10, 38, NULL),
-(35, 6, 33, NULL),
-(36, 3, 37, NULL),
-(37, 6, 43, NULL),
-(38, 4, 42, NULL),
-(39, 10, 46, NULL),
-(40, 5, 44, NULL),
-(41, 8, 39, NULL),
-(42, 10, 45, NULL),
-(43, 7, 47, NULL),
-(44, 6, 41, NULL),
-(45, 3, 48, NULL),
-(46, 1, 50, NULL),
-(47, 3, 51, NULL),
-(48, 8, 54, NULL),
-(49, 5, 52, NULL),
-(50, 6, 20, NULL),
-(51, 8, 26, NULL),
-(52, 10, 49, NULL),
-(53, 8, 53, NULL),
-(54, 8, 29, NULL);
+(17, 6, 18, NULL),
+(18, 7, 20, NULL),
+(19, 7, 24, NULL),
+(20, 1, 23, NULL),
+(21, 10, 19, NULL),
+(22, 1, 22, NULL),
+(23, 10, 21, NULL),
+(24, 8, 16, NULL),
+(25, 3, 25, NULL),
+(26, 4, 27, NULL),
+(27, 7, 26, NULL),
+(28, 1, 28, NULL),
+(29, 2, 29, NULL),
+(30, 4, 30, NULL),
+(31, 7, 32, NULL),
+(32, 7, 33, NULL),
+(33, 9, 31, NULL),
+(34, 7, 34, NULL),
+(35, 4, 35, NULL),
+(36, 1, 36, NULL),
+(37, 4, 37, NULL),
+(38, 4, 38, NULL),
+(39, 10, 42, NULL),
+(40, 5, 39, NULL),
+(41, 10, 41, NULL),
+(42, 5, 40, NULL),
+(43, 4, 44, NULL),
+(44, 10, 45, NULL),
+(45, 5, 46, NULL),
+(46, 6, 43, NULL),
+(47, 5, 47, NULL),
+(48, 7, 48, NULL),
+(49, 6, 49, NULL),
+(50, 2, 50, NULL),
+(51, 1, 51, NULL),
+(52, 7, 52, NULL),
+(53, 2, 53, NULL),
+(54, 10, 54, NULL);
 
 -- --------------------------------------------------------
 
@@ -212,18 +212,18 @@ CREATE TABLE `Team` (
   `contactEmail` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `plannedStartingTime` datetime(3) DEFAULT NULL,
   `startingTime` datetime(3) DEFAULT NULL,
+  `accessCode` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `createdAt` datetime(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-  `updatedAt` datetime(3) NOT NULL,
-  `accessCode` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+  `updatedAt` datetime(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `Team`
 --
 
-INSERT INTO `Team` (`id`, `name`, `contactEmail`, `plannedStartingTime`, `startingTime`, `createdAt`, `updatedAt`, `accessCode`) VALUES
-(1, 'Team 1', 'team1@example.com', '2023-04-21 08:35:18.427', NULL, '2023-04-21 08:35:18.439', '2023-04-21 08:35:18.439', '123456789'),
-(2, 'Team 2', 'team2@example.com', NULL, NULL, '2023-04-21 08:35:33.123', '2023-04-21 08:35:33.123', '987654321');
+INSERT INTO `Team` (`id`, `name`, `contactEmail`, `plannedStartingTime`, `startingTime`, `accessCode`, `createdAt`, `updatedAt`) VALUES
+(1, 'Team 1', 'team1@example.com', '2023-04-21 13:47:01.355', NULL, '123456789', '2023-04-21 13:47:01.363', '2023-04-21 13:47:01.363'),
+(2, 'Team 2', 'team2@example.com', NULL, NULL, '987654321', '2023-04-21 13:47:11.794', '2023-04-21 13:47:11.794');
 
 -- --------------------------------------------------------
 
@@ -308,7 +308,7 @@ ALTER TABLE `Team`
 -- AUTO_INCREMENT for table `User`
 --
 ALTER TABLE `User`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

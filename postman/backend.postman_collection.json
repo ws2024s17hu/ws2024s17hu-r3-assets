@@ -189,7 +189,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Team 4\",\r\n    \"contactEmail\": \"team4@example.com\",\r\n    \"plannedStartingTime\": \"2023-04-22T10:00:00.000Z\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Team 3\",\r\n    \"contactEmail\": \"team3@example.com\",\r\n    \"plannedStartingTime\": \"2023-04-23T10:00:00.000Z\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -264,7 +264,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"contactEmail\": \"Team 1asda\",\r\n    \"plannedStartingTime\": \"2023-04-22T15:10:23.362Z\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Team 2b\",\r\n    \"contactEmail\": \"team2b@example.com\",\r\n    \"plannedStartingTime\": \"2023-04-23T11:30:00.000Z\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -283,7 +283,7 @@
 							"variable": [
 								{
 									"key": "teamId",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -298,7 +298,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.have.status(204);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -327,7 +327,7 @@
 							"variable": [
 								{
 									"key": "teamId",
-									"value": "3"
+									"value": "2"
 								}
 							]
 						}
@@ -375,7 +375,7 @@
 		},
 		{
 			"key": "host",
-			"value": "http://backend.ub2023-YY.hu/api/v1",
+			"value": "http://backend.ub2023.hu/api/v1",
 			"type": "string"
 		}
 	]

@@ -222,7 +222,7 @@ CREATE TABLE `Team` (
 --
 
 INSERT INTO `Team` (`id`, `name`, `contactEmail`, `plannedStartingTime`, `startingTime`, `accessCode`, `createdAt`, `updatedAt`) VALUES
-(1, 'Team 1', 'team1@example.com', '2023-04-21 13:47:01.355', NULL, '123456789', '2023-04-21 13:47:01.363', '2023-04-21 13:47:01.363'),
+(1, 'Cisco XO', 'team1@example.com', '2023-04-21 13:47:01.355', NULL, '123456789', '2023-04-21 13:47:01.363', '2023-04-21 13:47:01.363'),
 (2, 'Team 2', 'team2@example.com', NULL, NULL, '987654321', '2023-04-21 13:47:11.794', '2023-04-21 13:47:11.794');
 
 -- --------------------------------------------------------

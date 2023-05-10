@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "f7e289c5-bb60-43db-a285-c31f0f3997ef",
-		"name": "Backend 2 (backend2.ub2023.hu)",
+		"name": "Backend 2 (backend2.localhost)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "21812106",
 		"_collection_link": "https://httpfoundation.postman.co/workspace/Team-Workspace~34357df0-3ea3-4d9a-8700-7d60ec444872/collection/21812106-f7e289c5-bb60-43db-a285-c31f0f3997ef?action=share&creator=21812106&source=collection_link"
@@ -704,7 +704,7 @@
 		},
 		{
 			"key": "host",
-			"value": "http://backend2.ub2023.hu/api/v1",
+			"value": "http://backend2.localhost/api/v1",
 			"type": "string"
 		},
 		{
